@@ -1,15 +1,12 @@
-<center> <h1>HBNB - The Console</h1> </center>
-
-This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
 
 -
 /AirBnB_clone$ ./console.py
 ```
-4. When this command is run the following prompt should appear:
+1. When this command is run the following prompt should appear:
 ```
 (hbnb)
 ```
-5. This prompt designates you are in the "HBnB" console. There are a variety of commands available within the console program.
+2. This prompt designates you are in the "HBnB" console. There are a variety of commands available within the console program.
 
 ##### Commands
     * create - Creates an instance based on given class
