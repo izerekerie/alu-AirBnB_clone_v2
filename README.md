@@ -1,5 +1,5 @@
 
-```# AirBnB_clone$ ./console.py```
+``` AirBnB_clone$ ./console.py```
 ```
 1. When this command is run the following prompt should appear:
 ```
