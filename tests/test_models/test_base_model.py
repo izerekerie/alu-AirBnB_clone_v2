@@ -94,12 +94,21 @@ class test_basemodel(unittest.TestCase):
         self.assertEqual(type(new.created_at), datetime.datetime)
 
     def test_updated_at(self):
-        """ """
+        """Test that updated_at is different after save."""
         new = self.value()
         self.assertEqual(type(new.updated_at), datetime.datetime)
-        n = new.to_dict()  # Convert to dict
-        new = BaseModel(**n)  # Create a new instance
-        self.assertFalse(new.created_at == new.updated_at, "created_at should not equal updated_at after save")
+        created_at_before_save = new.created_at
+        
+        new.save()  # Call save to update the updated_at field
+        
+        # Now create a new instance from the dict
+        n = new.to_dict()
+        new_from_dict = BaseModel(**n)
+        
+        self.assertFalse(new_from_dict.created_at == new_from_dict.updated_at,
+                         "created_at should not equal updated_at after save")
+        self.assertNotEqual(created_at_before_save, new_from_dict.updated_at,
+                            "updated_at should be different after save")
 
     def test_uuid(self):
         """ Testin UUID """
