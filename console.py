@@ -12,7 +12,6 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-
 class HBNBCommand(cmd.Cmd):
     """Defines the HolbertonBnB command interpreter."""
 
@@ -78,7 +77,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representation of an instance
         Exceptions:
             SyntaxError: when there is no args given
-            NameError: when there is no object taht has the name
+            NameError: when there is no object that has the name
             IndexError: when there is no id given
             KeyError: when there is no valid id given
         """
@@ -109,7 +108,7 @@ class HBNBCommand(cmd.Cmd):
         """Deletes an instance based on the class name and id
         Exceptions:
             SyntaxError: when there is no args given
-            NameError: when there is no object taht has the name
+            NameError: when there is no object that has the name
             IndexError: when there is no id given
             KeyError: when there is no valid id given
         """
@@ -157,10 +156,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_update(self, line):
-        """Updates an instanceby adding or updating attribute
+        """Updates an instance by adding or updating attribute
         Exceptions:
             SyntaxError: when there is no args given
-            NameError: when there is no object taht has the name
+            NameError: when there is no object that has the name
             IndexError: when there is no id given
             KeyError: when there is no valid id given
             AttributeError: when there is no attribute given
@@ -202,8 +201,7 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
 
     def count(self, line):
-        """count the number of instances of a class
-        """
+        """Count the number of instances of a class."""
         counter = 0
         try:
             my_list = split(line, " ")
@@ -219,32 +217,31 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def strip_clean(self, args):
-        """strips the argument and return a string of command
+        """Strips the argument and return a string of command
         Args:
             args: input list of args
         Return:
-            returns string of argumetns
+            returns string of arguments
         """
         new_list = []
         new_list.append(args[0])
         try:
             my_dict = eval(
-                args[1][args[1].find('{'):args[1].find('}')+1])
+                args[1][args[1].find('{'):args[1].find('}') + 1])
         except Exception:
             my_dict = None
         if isinstance(my_dict, dict):
-            new_str = args[1][args[1].find('(')+1:args[1].find(')')]
+            new_str = args[1][args[1].find('(') + 1:args[1].find(')')]
             new_list.append(((new_str.split(", "))[0]).strip('"'))
             new_list.append(my_dict)
             return new_list
-        new_str = args[1][args[1].find('(')+1:args[1].find(')')]
+        new_str = args[1][args[1].find('(') + 1:args[1].find(')')]
         new_list.append(" ".join(new_str.split(", ")))
         return " ".join(i for i in new_list)
 
     def default(self, line):
-        """retrieve all instances of a class and
-        retrieve the number of instances
-        """
+        """Retrieve all instances of a class and
+        retrieve the number of instances."""
         my_list = line.split('.')
         if len(my_list) >= 2:
             if my_list[1] == "all()":
@@ -266,7 +263,6 @@ class HBNBCommand(cmd.Cmd):
                     self.do_update(args)
         else:
             cmd.Cmd.default(self, line)
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
